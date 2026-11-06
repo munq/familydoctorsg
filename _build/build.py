@@ -128,7 +128,7 @@ def page(*, path, title, description, body, nav=None, og_type="website",
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<div class="notice-banner" role="note"><div class="wrap">The clinic closed permanently on 6 November 2026. <a href="/">Read Dr Chia&rsquo;s thank-you note</a></div></div>
+<div class="notice-banner" role="note"><div class="wrap">The clinic closed permanently on 6 November 2026. <a href="/#thank-you">Read Dr Chia&rsquo;s thank-you note</a></div></div>
 <div class="topbar">
   <div class="wrap">
     <div class="contact">
@@ -193,6 +193,7 @@ def page(*, path, title, description, body, nav=None, og_type="website",
         depth = path.strip("/").count("/") + 1 if path.strip("/") else 0
         prefix = "../" * depth or "./"
         html = re.sub(r'(href|src)="/(?!/)', lambda m: f'{m.group(1)}="{prefix}', html)
+        html = html.replace(f'href="{prefix}#', 'href="#') if path == "/" else html
     out = ROOT / path.lstrip("/") / "index.html" if path.endswith("/") else ROOT / path.lstrip("/")
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(html, encoding="utf-8")
@@ -237,7 +238,7 @@ home_body = f"""
   </div>
 </section>
 <section class="narrow" aria-labelledby="letter-title">
-  <article class="letter">
+  <article class="letter" id="thank-you">
     <h2 id="letter-title">A deep-felt thank you</h2>
     <p>Well, after 35 and a half years, we are sad to announce that our clinic has finally closed for good.</p>
     <p>We&rsquo;ve had an incredible run&hellip; many of our patients have grown up with us and we were already seeing the third and fourth generations in families that have continued to trust us all these years.</p>
@@ -245,10 +246,6 @@ home_body = f"""
     <p>You all know how to reach me. I may not be able to be your family doctor any more, but I would love for our friendship to continue. Please keep in touch with me and let me know how you and your family do in the years to come. I will miss you all deeply.</p>
     <p class="sign">With all our heart,<strong>Dr Daniel Chia</strong>Christine, Helen and Jeannie</p>
     <time datetime="{CLOSED_ON}">6th November 2026</time>
-    <div class="actions">
-      <a class="btn btn-light" href="{MAILTO}">{ICONS['mail']} Contact Dr Chia</a>
-      <a class="btn btn-ghost" href="/location/">{ICONS['pin']} Clinic location</a>
-    </div>
   </article>
 
   <div class="grid">
@@ -305,7 +302,7 @@ loc_body = f"""
   </div>
 </section>
 <section class="wrap">
-  <div class="callout" role="note"><strong>The clinic is permanently closed.</strong> After 35 years, The Family Doctor closed on 6 November 2026. Thank you for 35 years of support. <a href="/">Read Dr Chia&rsquo;s note</a>.</div>
+  <div class="callout" role="note"><strong>The clinic is permanently closed.</strong> After 35 years, The Family Doctor closed on 6 November 2026. Thank you for 35 years of support. <a href="/#thank-you">Read Dr Chia&rsquo;s note</a>.</div>
   <div class="grid" style="margin-top:0">
     <div class="card">
       <p class="kicker">Address</p>
