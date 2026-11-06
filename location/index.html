@@ -215,5 +215,18 @@
     </div>
   </div>
 </footer>
+<script>
+/* Opened from disk: point folder links at their index.html so navigation works offline. */
+if (location.protocol === "file:") {
+  document.querySelectorAll("a[href]").forEach(function (a) {
+    var h = a.getAttribute("href");
+    if (/^(https?:|mailto:|tel:|#)/.test(h)) return;
+    var parts = h.split("#");
+    if (parts[0] === "" || /\/$/.test(parts[0])) {
+      a.setAttribute("href", parts[0] + "index.html" + (parts[1] !== undefined ? "#" + parts[1] : ""));
+    }
+  });
+}
+</script>
 </body>
 </html>

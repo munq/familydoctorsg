@@ -70,6 +70,22 @@ def crumbs_html(items):
     return f'<nav class="crumbs" aria-label="Breadcrumb"><ol>{"".join(lis)}</ol></nav>'
 
 
+OFFLINE_JS = r'''<script>
+/* Opened from disk: point folder links at their index.html so navigation works offline. */
+if (location.protocol === "file:") {
+  document.querySelectorAll("a[href]").forEach(function (a) {
+    var h = a.getAttribute("href");
+    if (/^(https?:|mailto:|tel:|#)/.test(h)) return;
+    var parts = h.split("#");
+    if (parts[0] === "" || /\/$/.test(parts[0])) {
+      a.setAttribute("href", parts[0] + "index.html" + (parts[1] !== undefined ? "#" + parts[1] : ""));
+    }
+  });
+}
+</script>
+'''
+
+
 def page(*, path, title, description, body, nav=None, og_type="website",
          ld=None, image=OG_IMAGE, image_alt=None, extra_head="", robots="index, follow, max-image-preview:large"):
     url = SITE + path
@@ -188,12 +204,19 @@ def page(*, path, title, description, body, nav=None, og_type="website",
 </html>
 """
     # Relative links so pages also work when opened straight from disk.
-    # 404.html stays root-absolute: GitHub Pages serves it at whatever URL was missing.
-    if path != "/404.html":
+    if path == "/404.html":
+        # GitHub Pages serves 404.html at whatever URL was missing, so online it
+        # resolves its relative links from the site root via <base href="/">.
+        prefix = "./"
+        html = html.replace('<meta charset="utf-8">',
+            '<meta charset="utf-8">\n<script>if(location.protocol!=="file:"){var b=document.createElement("base");b.href=location.origin+String.fromCharCode(47);document.head.appendChild(b);}</script>', 1)
+    else:
         depth = path.strip("/").count("/") + 1 if path.strip("/") else 0
         prefix = "../" * depth or "./"
-        html = re.sub(r'(href|src)="/(?!/)', lambda m: f'{m.group(1)}="{prefix}', html)
-        html = html.replace(f'href="{prefix}#', 'href="#') if path == "/" else html
+    html = html.replace("</body>", OFFLINE_JS + "</body>", 1)
+    html = re.sub(r'(href|src)="/(?!/)', lambda m: f'{m.group(1)}="{prefix}', html)
+    if path == "/":
+        html = html.replace(f'href="{prefix}#', 'href="#')
     out = ROOT / path.lstrip("/") / "index.html" if path.endswith("/") else ROOT / path.lstrip("/")
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(html, encoding="utf-8")

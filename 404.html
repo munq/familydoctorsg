@@ -2,16 +2,17 @@
 <html lang="en-SG">
 <head>
 <meta charset="utf-8">
+<script>if(location.protocol!=="file:"){var b=document.createElement("base");b.href=location.origin+String.fromCharCode(47);document.head.appendChild(b);}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Page not found | The Family Doctor</title>
 <meta name="description" content="This page could not be found on familydoctor.sg.">
 <meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://familydoctor.sg/404.html">
 <meta name="theme-color" content="#800000">
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
+<link rel="icon" href="./favicon.ico" sizes="any">
+<link rel="icon" href="./assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="./assets/img/apple-touch-icon.png">
+<link rel="manifest" href="./site.webmanifest">
 <meta property="og:locale" content="en_SG">
 <meta property="og:site_name" content="The Family Doctor">
 <meta property="og:type" content="website">
@@ -29,7 +30,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
-<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="./assets/css/style.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -50,7 +51,7 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<div class="notice-banner" role="note"><div class="wrap">The clinic closed permanently on 6 November 2026. <a href="/#thank-you">Read Dr Chia&rsquo;s thank-you note</a></div></div>
+<div class="notice-banner" role="note"><div class="wrap">The clinic closed permanently on 6 November 2026. <a href="./#thank-you">Read Dr Chia&rsquo;s thank-you note</a></div></div>
 <div class="topbar">
   <div class="wrap">
     <div class="contact">
@@ -65,10 +66,10 @@
 </div>
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="/" aria-label="The Family Doctor home"><img src="/assets/img/logo.png" width="656" height="140" alt="The Family Doctor, clinic &amp; surgery"></a>
+    <a class="brand" href="./" aria-label="The Family Doctor home"><img src="./assets/img/logo.png" width="656" height="140" alt="The Family Doctor, clinic &amp; surgery"></a>
     <nav class="nav" aria-label="Main">
-      <a href="/blog/">Health Education</a>
-      <a href="/location/">Location</a>
+      <a href="./blog/">Health Education</a>
+      <a href="./location/">Location</a>
     </nav>
   </div>
 </header>
@@ -78,7 +79,7 @@
   <p class="eyebrow">Error 404</p>
   <h1>Page not found</h1>
   <p class="lede">The page you were looking for isn&rsquo;t here. The clinic has closed, but its health education articles and contact details are still available.</p>
-  <p><a class="btn btn-primary" href="/">Go to the home page</a> &nbsp; <a href="/blog/">Health Education</a> &middot; <a href="/location/">Location</a></p>
+  <p><a class="btn btn-primary" href="./">Go to the home page</a> &nbsp; <a href="./blog/">Health Education</a> &middot; <a href="./location/">Location</a></p>
 </div></section>
 
 </main>
@@ -93,9 +94,9 @@
       <div>
         <h2>Pages</h2>
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/blog/">Health Education</a></li>
-          <li><a href="/location/">Location</a></li>
+          <li><a href="./">Home</a></li>
+          <li><a href="./blog/">Health Education</a></li>
+          <li><a href="./location/">Location</a></li>
         </ul>
       </div>
       <div>
@@ -109,9 +110,22 @@
     </div>
     <div class="foot-base">
       <span>&copy; The Family Doctor 2017&ndash;2026</span>
-      <span><a href="/terms-of-use/">Terms of Use</a> &middot; <a href="/privacy-policy/">Privacy Policy</a></span>
+      <span><a href="./terms-of-use/">Terms of Use</a> &middot; <a href="./privacy-policy/">Privacy Policy</a></span>
     </div>
   </div>
 </footer>
+<script>
+/* Opened from disk: point folder links at their index.html so navigation works offline. */
+if (location.protocol === "file:") {
+  document.querySelectorAll("a[href]").forEach(function (a) {
+    var h = a.getAttribute("href");
+    if (/^(https?:|mailto:|tel:|#)/.test(h)) return;
+    var parts = h.split("#");
+    if (parts[0] === "" || /\/$/.test(parts[0])) {
+      a.setAttribute("href", parts[0] + "index.html" + (parts[1] !== undefined ? "#" + parts[1] : ""));
+    }
+  });
+}
+</script>
 </body>
 </html>
