@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>The Family Doctor</title>
+  <link>https://familydoctor.sg/</link>
+  <atom:link href="https://familydoctor.sg/feed.xml" rel="self" type="application/rss+xml"/>
+  <description>Health education from The Family Doctor, Singapore</description>
+  <language>en-SG</language>
+  <item>
+    <title>Ideal weight</title>
+    <link>https://familydoctor.sg/ideal-weight/</link>
+    <guid>https://familydoctor.sg/ideal-weight/</guid>
+    <pubDate>Thu, 20 Apr 2017 08:00:00 +0800</pubDate>
+    <category>Health Education</category>
+    <description>Two ways to check whether your weight is ideal: BMI and desirable body weight ranges.</description>
+  </item>
+</channel>
+</rss>
