@@ -24,7 +24,6 @@ POSTAL = "574349"
 LAT, LNG = 1.35232, 103.83491
 MAPS = "https://www.google.com/maps/search/?api=1&query=The+Family+Doctor+215D+Upper+Thomson+Rd+Singapore+574349"
 FACEBOOK = "https://www.facebook.com/thefamilydoctorsingapore/"
-TWITTER = "https://twitter.com/thefamilydr"
 CLOSED_ON = "2026-11-06"
 TODAY = date.today().isoformat()
 OG_IMAGE = f"{SITE}/assets/img/og-image.png"
@@ -129,7 +128,6 @@ def page(*, path, title, description, body, nav=None, og_type="website",
 <meta property="og:image" content="{image}">
 <meta property="og:image:alt" content="{escape(image_alt)}">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@thefamilydr">
 <meta name="twitter:title" content="{escape(title)}">
 <meta name="twitter:description" content="{escape(description)}">
 <meta name="twitter:image" content="{image}">
@@ -153,7 +151,6 @@ def page(*, path, title, description, body, nav=None, og_type="website",
     </div>
     <div class="social">
       <a href="{FACEBOOK}" rel="noopener" target="_blank">{ICONS['facebook']}<span>Facebook</span></a>
-      <a href="{TWITTER}" rel="noopener" target="_blank">{ICONS['x']}<span>X (Twitter)</span></a>
     </div>
   </div>
 </div>
@@ -189,7 +186,6 @@ def page(*, path, title, description, body, nav=None, og_type="website",
         <h2>Follow us</h2>
         <ul>
           <li><a href="{FACEBOOK}" rel="noopener" target="_blank">Facebook</a></li>
-          <li><a href="{TWITTER}" rel="noopener" target="_blank">X (Twitter)</a></li>
           <li><a href="{MAILTO}">Contact Dr Chia</a></li>
         </ul>
       </div>
@@ -238,7 +234,7 @@ CLINIC_LD = {
     "hasMap": MAPS,
     "medicalSpecialty": "PrimaryCare",
     "description": "Family medical clinic and surgery on Upper Thomson Road, Singapore, run by Dr Daniel Chia for over 35 years. Permanently closed on 6 November 2026.",
-    "sameAs": [FACEBOOK, TWITTER],
+    "sameAs": [FACEBOOK],
     "founder": {"@id": PERSON_ID},
     "employee": {"@id": PERSON_ID},
 }
@@ -285,7 +281,7 @@ home_body = f"""
     </div>
     <div class="card">
       <p class="kicker">Stay in touch</p>
-      <p>For the latest announcements and updates, follow us on <a href="{FACEBOOK}" rel="noopener" target="_blank">Facebook</a> and <a href="{TWITTER}" rel="noopener" target="_blank">X (Twitter)</a>.</p>
+      <p>For the latest announcements and updates, follow us on <a href="{FACEBOOK}" rel="noopener" target="_blank">Facebook</a>.</p>
     </div>
   </div>
 </section>
@@ -336,7 +332,7 @@ loc_body = f"""
     <div class="card">
       <p class="kicker">Contact</p>
       <p><a href="tel:{PHONE}">{PHONE_DISPLAY}</a><br><a href="{MAILTO}">{EMAIL}</a></p>
-      <p>For announcements and updates, follow us on <a href="{FACEBOOK}" rel="noopener" target="_blank">Facebook</a> and <a href="{TWITTER}" rel="noopener" target="_blank">X (Twitter)</a>.</p>
+      <p>For announcements and updates, follow us on <a href="{FACEBOOK}" rel="noopener" target="_blank">Facebook</a>.</p>
     </div>
     <div class="card">
       <p class="kicker">Consultation hours</p>
